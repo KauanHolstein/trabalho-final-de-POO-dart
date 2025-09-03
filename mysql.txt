@@ -1,0 +1,17 @@
+CREATE DATABASE IF NOT EXISTS db_clientes_pedidos;
+
+USE db_clientes_pedidos;
+
+CREATE TABLE IF NOT EXISTS clientes (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS pedidos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  cliente_id INT NOT NULL,
+  valor DECIMAL(10, 2) NOT NULL,
+  data DATE NOT NULL,
+  FOREIGN KEY (cliente_id) REFERENCES clientes(id) ON DELETE CASCADE
+);
